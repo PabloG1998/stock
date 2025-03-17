@@ -10,8 +10,8 @@ $username = $_SESSION['username'];
 
 // Opciones dinámicas por usuario
 $acciones = [
-    'Gladys' => ['Agregar', 'Eliminar', 'Filtrar'],
-    'Pedro'  => ['Filtrar'],
+    'Gladys' => ['Agregar', 'Eliminar', 'Filtrar', 'Listar'],
+    'Pablo'  => ['Filtrar', 'Eliminar', 'Agregar', 'Listar', 'Ver Base de Datos'],  // Corregido "Elimina" a "Eliminar"
     'Ana'    => ['Agregar', 'Filtrar']
 ];
 
@@ -24,9 +24,33 @@ $opciones = $acciones[$username] ?? [];
 <head>
     <meta charset="UTF-8">
     <title>Dashboard - <?= htmlspecialchars($username) ?></title>
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Bootstrap JS Bundle (con Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-info navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Brand</a>
+
+            <ul class="navbar-nav d-flex flex-row ms-auto">
+             
+                        <li>
+                            <a class="dropdown-item" href="logout.php">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container mt-5">
         <h1>Hola, <?= htmlspecialchars($username) ?> 👋</h1>
         <p>Bienvenido al panel de control.</p>
@@ -43,7 +67,13 @@ $opciones = $acciones[$username] ?? [];
             <a href="filtrar.php" class="btn btn-primary mb-2">Filtrar Información</a>
         <?php endif; ?>
 
-        <a href="logout.php" class="btn btn-secondary">Cerrar Sesión</a>
+        <?php if (in_array('Listar', $opciones)): ?>
+            <a href="listar.php" class="btn btn-primary mb-2">Listar Información</a>
+        <?php endif; ?>
+
+        <?php if (in_array('Ver Base de Datos', $opciones)): ?>
+            <a href="base.php" class="btn btn-primary mb-2">Ver base de datos</a>
+        <?php endif; ?>
     </div>
 </body>
 </html>

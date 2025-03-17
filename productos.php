@@ -16,12 +16,12 @@ try {
 
 // Procesar filtro de búsqueda
 $filter = $_GET['filter'] ?? 'all';
-$sql = 'SELECT * FROM content';
+$sql = 'SELECT * FROM categoria';
 
 if ($filter === 'mercaderia') {
-    $sql .= " WHERE category = 'mercaderia'";
+    $sql .= " WHERE categoria = 'mercaderia'";
 } elseif ($filter === 'herramientas') {
-    $sql .= " WHERE category = 'herramientas'";
+    $sql .= " WHERE categoria = 'herramientas'";
 }
 
 $stmt = $pdo->query($sql);
