@@ -1,5 +1,19 @@
 <?php 
 include('config/database.php');
+/*
+TODO:
+-Create dashboard.php
+-Implements form add_product.php
+-Implements form delete_product.php
+-Implements form edit_product.php
+-Recruiter View:
+  -Refine index.php
+  -Dynamic filters
+-Security
+ -Global Access Control
+ -Responsive Design
+ -Visual feedback
+*/
 ?>
 
 <!DOCTYPE html>
